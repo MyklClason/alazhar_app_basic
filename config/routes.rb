@@ -1,22 +1,18 @@
 Rails.application.routes.draw do
 
-#  get 'houses/new'
+  get 'sessions/new'
 
- # get 'houses/create'
+  get 'add_user', to: 'users#new', as: 'add_user'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  #get 'houses/show'
-
-  #get 'houses/index'
-
-#  get 'houses/edit'
-
-#  get 'houses/update'
-
-#  get 'houses/delete'
+  resources :users
 
   resources :houses
 
   root :to => 'houses#index', as: :root
+
+  resources :sessions
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

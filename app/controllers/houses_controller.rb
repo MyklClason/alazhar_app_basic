@@ -1,4 +1,7 @@
 class HousesController < ApplicationController
+
+  before_filter :authorize, only: [:new, :create, :edit, :update, :destroy, :index]
+
   def new
     @houses = House.new
   end
