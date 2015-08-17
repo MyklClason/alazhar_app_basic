@@ -10,6 +10,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authorize_admin
+    if current_user_admin.nil?
+    flash[:error] = "You don't have permission to view this page!"
+    redirect_to login_url
+    end
+  end
+
   private
 
   def current_user
@@ -18,5 +25,12 @@ class ApplicationController < ActionController::Base
   	end
   end
 
+  def current_user_admin
+    if session[:user_id] && User.find(session[:user_id]).admin
+      @current_user_admin = User.find(session[:user_id])
+    end
+  end
+
   helper_method :current_user
+  helper_method :current_user_admin
 end

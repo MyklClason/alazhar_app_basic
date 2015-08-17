@@ -1,0 +1,6 @@
+<h1>All investors</h1>
+<ul>
+	<% @users.each do |u| %>
+	<li><%= @user.first_name %> <%= @user.last_name %> | <%= link_to "Show more", show_user_path(u) %> | <%= link_to "Edit Information", edit_user_path(u) %></li>
+	<% end %>
+</ul>
