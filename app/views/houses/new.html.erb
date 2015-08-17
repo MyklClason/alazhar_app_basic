@@ -1,0 +1,14 @@
+<h1>Add a new property</h1>
+
+<%= form_for @houses do |f| %>
+
+			<%= f.label :address %>
+			<%= f.text_field :address, class: 'text-field-regular' %>
+
+			<%= f.label :purchase_price %>
+			<%= f.text_field :purchase_price, class: 'text-field-regular' %>
+
+			<%= f.submit "Create Property", class: 'btn btn-primary' %>
+
+		<% end %>
+

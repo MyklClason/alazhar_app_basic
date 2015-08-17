@@ -1,0 +1,13 @@
+<h1>Properties currently held by Alazhar Inc.</h1>
+<% if @houses.empty? %>
+<p>There are no properties yet.</p>
+<% else %>
+<ul>
+<% @houses.each do |h| %>
+<li>Address: <%= h.address %> | Purchase Price: <%= h.purchase_price %> | <%= link_to 'Delete Property', house_path(:id => h.id), method: :delete, data:  {confirm: "Are you sure?"} %></li>
+<% end %>
+</ul>
+
+<% end %>
+
+<%= link_to "New Property", new_house_path %>
