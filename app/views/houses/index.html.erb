@@ -1,4 +1,4 @@
-<h1>Properties currently held by Alazhar Inc.</h1>
+<h2>Properties currently held by Alazhar Inc.</h2>
 <% if @houses.empty? %>
 <p>There are no properties yet.</p>
 <% else %>
@@ -12,6 +12,5 @@
 
 <% if current_user.admin? %>
 <%= link_to "New Property", new_house_path %>
-<%= link_to "Add An Investor", add_user_path %>
 <% end %>
 

@@ -1,6 +1,6 @@
-<h1>Edit User</h1>
+<h2>Edit User</h2>
 
-<%= form_for @user, method: :patch do |f| %>
+<%= form_for @user, class = "form-horizontal", method: :patch do |f| %>
   <% if @user.errors.any? %>
     <div class="error_messages">
       <h2>Form is invalid</h2>
@@ -12,29 +12,29 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :total_investment %><br />
     <%= f.text_field :total_investment %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password %><br />
     <%= f.password_field :password %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </div>
-  <div class="actions"><%= f.submit "Update User" %></div>
+  <div class="actions"><%= f.submit "Update User", class="btn btn-primary" %></div>
 <% end %>

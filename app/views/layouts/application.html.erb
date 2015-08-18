@@ -7,26 +7,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div class = "header"><h1>Alazhar Management, LLC</h1></div>
+	<div class = "container">
+	<div class = "header" style = "background-color: blue;"><h1 style = "text-align:center; color:white;">Alazhar Management, LLC</h1></div>
 	<div class = "nav">
 		<% if current_user %>
-		<%= link_to "View properties", houses_path %> | <%= link_to "View my account", user_path(current_user.id) %></div>
-		<% if current_user.admin? %>
-		<%= link_to "View/Edit Investors", users_path %>
+		<ul><li><%= link_to "View properties", houses_path %></li>
+			<li><%= link_to "View my account", user_path(current_user.id) %></li>
+			<% if current_user.admin? %>
+			<li><%= link_to "View/Edit Investors", users_path %></li>
+			<li><%= link_to "Add an Investor", new_user_path %></li>
+		</ul>
 		<% end %>
 		<% end %>
+	</div>
+
+<div class = "container">
 
 	<% flash.each do |type, message| %>
-    <div class="alert"><%= message %></div>
+      <div class="alert"><%= message %></div>
     <% end %>
 
 <%= yield %>
 
-<div class = "footer">
+</div>
+
+<div class = "container footer">
 	<% if current_user %>
 		Logged in as <%= current_user.first_name %> <%= current_user.last_name %> <%= link_to "Log Out", logout_path %>
-	<% else %>
-		<%= link_to "Log In", login_path %>
 	<% end %>
 </div>
 

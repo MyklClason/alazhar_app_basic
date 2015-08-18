@@ -30,6 +30,8 @@ gem 'best_in_place', github: 'bernat/best_in_place'
 
 gem "responders"
 
+gem 'bootstrap-sass', '~> 3.3.5'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
