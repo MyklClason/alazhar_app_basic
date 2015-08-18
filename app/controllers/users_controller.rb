@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  respond_to :html, :json
+
 	before_filter :authorize_admin, only: [:index, :edit, :update, :new, :create]
 	before_filter :authorize, only: [:show]
 	def new
@@ -23,13 +25,11 @@ class UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-    if @user.update(user_params)
-      flash[:success] = "Post successfully updated!"
-      redirect_to root_path
-    else
-      render 'edit'
-    end
-	end
+    @user.update(user_params)
+    flash[:success] = "Investor data successfully updated!"
+    respond_with @user
+  end
+
 
     def show
     	if current_user.id == User.find(params[:id]).id || current_user.admin?
@@ -50,6 +50,8 @@ class UsersController < ApplicationController
       redirect_to root_path
   	end
 
+
+private
 
 	def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :total_investment)

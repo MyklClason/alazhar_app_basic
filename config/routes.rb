@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'password_resets/new'
+
   get 'sessions/new'
 
   get 'add_user', to: 'users#new', as: 'add_user'
@@ -10,6 +12,8 @@ Rails.application.routes.draw do
   resources :users
 
   resources :houses
+
+  resources :password_resets
 
   root :to => 'houses#index', as: :root
 
