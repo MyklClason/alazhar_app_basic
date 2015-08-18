@@ -2,4 +2,6 @@
 <p>Name: <%= @user.first_name %> <%= @user.last_name %></p>
 <p>Amount invested: <%= @user.total_investment %></p>
 <p>Current balance: <%= @user.balance %></p>
+<p><%= link_to "Edit Information", edit_user_path(@user.id) %></p>
+<p><%= link_to 'Remove User', user_path(:id => @user.id), method: :delete, data:  {confirm: "Are you sure?"} %></p>
 

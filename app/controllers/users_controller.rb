@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-	before_filter :authorize_admin, only: [:index]
+	before_filter :authorize_admin, only: [:index, :edit, :update, :new, :create]
+	before_filter :authorize, only: [:show]
 	def new
 		@user = User.new
 	end
@@ -40,8 +41,14 @@ class UsersController < ApplicationController
     end
 
     def index
-    	@users = Users.all
+    	@users = User.all
     end
+
+    def destroy
+    User.delete(params[:id])
+      flash[:info] = "Investor successfully removed."
+      redirect_to root_path
+  	end
 
 
 	def user_params

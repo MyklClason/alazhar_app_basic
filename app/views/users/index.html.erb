@@ -1,6 +1,15 @@
 <h1>All investors</h1>
-<ul>
+
+<table>
+	<tr><th>First Name</th><th>Last Name</th><th>Total Investment</th><th>Current Balance</th></tr>
 	<% @users.each do |u| %>
-	<li><%= @user.first_name %> <%= @user.last_name %> | <%= link_to "Show more", show_user_path(u) %> | <%= link_to "Edit Information", edit_user_path(u) %></li>
+	<tr>
+		<td><% if u.first_name %><%= u.first_name %><% else %>N/A<% end %></td>
+		<td><% if u.last_name %><%= u.last_name %><% else %>N/A<% end %></td>
+		<td><% if u.total_investment %><%= u.total_investment %><% else %>N/A<% end %></td>
+		<td><% if u.balance %><%= u.balance %><% else %>N/A<% end %></td>
+		<td><%= link_to "Show more", user_path(u.id) %></td>
+	</tr>
 	<% end %>
-</ul>
+</table>
+

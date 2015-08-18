@@ -4,16 +4,14 @@
 <% else %>
 <ul>
 <% @houses.each do |h| %>
-<li>Address: <%= h.address %> | Purchase Price: <%= h.purchase_price %> | <%= link_to 'Delete Property', house_path(:id => h.id), method: :delete, data:  {confirm: "Are you sure?"} %></li>
+<li>Address: <%= h.address %> | Purchase Price: <%= h.purchase_price %><% if current_user.admin? %> | <%= link_to 'Edit Property', edit_house_path(h.id) %> | <%= link_to 'Delete Property', house_path(:id => h.id), method: :delete, data:  {confirm: "Are you sure?"} %><% end %></li>
 <% end %>
 </ul>
 
 <% end %>
 
+<% if current_user.admin? %>
 <%= link_to "New Property", new_house_path %>
 <%= link_to "Add An Investor", add_user_path %>
-<% if current_user %>
-	Logged in as <%= current_user.email %>. <%= link_to "Log Out", logout_path %>
-<% else %>
-<%= link_to "Log In", login_path %>
 <% end %>
+
