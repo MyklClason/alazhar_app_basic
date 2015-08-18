@@ -8,10 +8,10 @@
 </head>
 <body>
 	<div class = "container">
-	<div class = "header" style = "background-color: blue;"><h1 style = "text-align:center; color:white;">Alazhar Management, LLC</h1></div>
-	<div class = "nav">
+	<div class = "header"><h1 style = "text-align:center;">Alazhar Management, LLC</h1></div>
+	<div class = "navbar-header">
 		<% if current_user %>
-		<ul><li><%= link_to "View properties", houses_path %></li>
+		<ul class = "nav navbar-nav"><li><%= link_to "View properties", houses_path %></li>
 			<li><%= link_to "View my account", user_path(current_user.id) %></li>
 			<% if current_user.admin? %>
 			<li><%= link_to "View/Edit Investors", users_path %></li>
@@ -20,6 +20,7 @@
 		<% end %>
 		<% end %>
 	</div>
+</div>
 
 <div class = "container">
 
@@ -31,11 +32,12 @@
 
 </div>
 
-<div class = "container footer">
+<nav class="navbar navbar-default navbar-fixed-bottom">
+<div class = "container" style = "padding-top: 10px;">
 	<% if current_user %>
 		Logged in as <%= current_user.first_name %> <%= current_user.last_name %> <%= link_to "Log Out", logout_path %>
 	<% end %>
 </div>
-
+</nav>
 </body>
 </html>

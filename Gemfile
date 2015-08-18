@@ -32,6 +32,8 @@ gem "responders"
 
 gem 'bootstrap-sass', '~> 3.3.5'
 
+gem 'figaro'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

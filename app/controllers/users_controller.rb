@@ -27,8 +27,19 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
     @user.update(user_params)
     flash[:success] = "Investor data successfully updated!"
-    respond_with @user
+    respond_with_bip(@user)
   end
+
+  #def update
+  #  @user = User.find(params[:id])
+  #  if @user.update(user_params)
+  #    flash[:success] = "Investor data succesfully updated"
+  #    redirect_to users_path
+  #  else
+  #    render 'edit'
+  #  end
+  #end
+
 
 
     def show
@@ -54,7 +65,7 @@ class UsersController < ApplicationController
 private
 
 	def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :total_investment)
+      params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :total_investment, :balance)
     end
 
 
